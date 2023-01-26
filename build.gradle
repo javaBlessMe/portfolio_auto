@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id "io.qameta.allure" version "2.9.6"
+}
+
+group 'ru.gb'
+version '1.0-SNAPSHOT'
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    runtimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.6.3'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.7.2'
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.3.1'
+    implementation 'org.hamcrest:hamcrest:2.2'
+    implementation 'com.codeborne:selenide:6.10.3'
+
+    testImplementation 'io.qameta.allure:allure-junit5:2.13.6'
+    implementation 'io.qameta.allure:allure-commandline:2.13.6'
+    implementation 'io.qameta.allure:allure-assertj:2.13.6'
+    implementation 'io.qameta.allure:allure-rest-assured:2.13.6'
+    implementation 'io.qameta.allure:allure-java-commons:2.13.6'
+    implementation 'io.qameta.allure:allure-selenide:2.13.6'
+    runtimeOnly 'org.aspectj:aspectjweaver:1.9.6'
+}
+
+test {
+    useJUnitPlatform()
+}
+task run_tests(type: Test) {
+     useJUnitPlatform {
+    }
+}
+
